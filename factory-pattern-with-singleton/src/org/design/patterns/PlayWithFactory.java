@@ -8,6 +8,7 @@ import java.awt.*;
 import java.util.List;
 
 import static org.design.patterns.factory.Factory.createFactory;
+import static org.design.patterns.factory.Factory.createSingleton;
 
 public class PlayWithFactory {
     public static void main(String[] args) {
@@ -35,5 +36,12 @@ public class PlayWithFactory {
         System.out.println("Circles=" + defaultGenericFactory.create5());
         System.out.println("Circle=" + genericFactory1.newInstance());
         System.out.println("Circles=" + genericFactory1.create5());
+
+        // To create singleton
+        Factory<Circle> singleton = createSingleton(Circle::new);
+        Circle circle1 = singleton.get();
+        Circle circle2 = singleton.get();
+        System.out.println(circle1.hashCode() == circle2.hashCode());
+
     }
 }

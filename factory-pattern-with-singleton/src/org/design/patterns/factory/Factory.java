@@ -12,6 +12,11 @@ public interface Factory<T> extends Supplier<T> {
         return supplier::get;
     }
 
+    static <T> Factory<T> createSingleton(Supplier<T> supplier) {
+        T singleton = supplier.get();
+        return () -> singleton;
+    }
+
     static <P, T> Factory<T> createFactory(Function<P, T> constructor, P color) {
         return () -> constructor.apply(color);
     }
