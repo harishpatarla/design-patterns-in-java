@@ -41,6 +41,7 @@ public class PlayWithFactory {
         Factory<Circle> singleton = createSingleton(Circle::new);
         Circle circle1 = singleton.get();
         Circle circle2 = singleton.get();
+        // checks if both point to same memory location which means it's the same object returned in both cases
         System.out.println(circle1.hashCode() == circle2.hashCode());
 
     }
