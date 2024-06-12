@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 
 public interface Validator {
 
+    // has to implement the only validate() abstract method
     static Validator validate(Predicate<Person> predicate, String errorMessage) {
         return p -> {
             if (predicate.test(p)) {
@@ -53,7 +54,7 @@ public interface Validator {
 
     interface ValidatorSupplier extends Supplier<Person> {
         default Person validate() {
-            return get();
+            return this.get();
         }
     }
 

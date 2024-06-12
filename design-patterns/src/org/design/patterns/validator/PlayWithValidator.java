@@ -14,8 +14,12 @@ public class PlayWithValidator {
         Person linda = new Person(null, 1_000);
 
         sarah =
+                //Validator.validate() is static method
                 Validator.validate(p -> p.getName() != null, "The name should not be null")
+                        // on takes Person object and return supplier,
+                        // we can call .get() on it but for readability we wrap it in another supplier - ValidatorSupplier
                         .on(sarah)
+                        // This does not take parameter and returns a person - so it can be modeled as supplier
                         .validate();
         System.out.println("Sarah : " + sarah);
 
